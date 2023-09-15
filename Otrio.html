@@ -1,0 +1,91 @@
+<html>
+    <script src="Otrio.js"></script>
+    <style>
+        .collapsible {
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+        .active,
+        .collapsible:hover {
+            background-color: #ccc;
+        }
+        .collapsible:after {
+            content: "\02795"; /* Unicode character for "plus" sign (+) */
+            font-size: 13px;
+            color: white;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2796"; /* Unicode character for "minus" sign (-) */
+        }
+
+        /* Style the collapsible content. Note: hidden by default */
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+    </style>
+    <body onload="OnLoad()">
+        </body>
+        <div width="fit-content">
+            <canvas id="canvas"></canvas>
+            <div id="settings" style="text-align: center;">
+                <div style="width: 20%; display: inline-block; vertical-align: top">
+                    <button type="button" class="collapsible">Setting</button>
+                    <div class="content" id="util_setting">
+                        <label for="player-count">Number of Players</label>
+                        <input type="number" id="player-count" min="2" max="4" step="1" value="2" onchange="OnLoad()" />
+                        <br />
+                        <label for="checkbox-corpse">Use Corpses</label>
+                        <input checked id="checkbox-corpse" value="hasCorpse" type="checkbox" onchange="OnLoad()" />
+                        <br />
+                        <label for="game-width">Image Scale</label>
+                        <input type="number" id="game-width" value="14" min="2" step="1" onchange="getSettings()" />
+                        <br />
+                        <label for="game-size">Board Size</label>
+                        <input type="number" id="game-size" value="3" min="3" step="1" onchange="OnLoad()" />
+                        <br />
+                        <label for="blank-alpha">Alpha Values</label>
+                        <br/>
+                        <label for="blank-alpha">Blanks Alpha</label>
+                        <input type="number" id="blank-alpha" value="51" min="0" max="255" step="1" />
+                        <label for="corpse-alpha">Corpse Alpha</label>
+                        <input type="number" id="corpse-alpha" value="102" min="0" max="255" step="1"/>
+                    </div>
+                </div>
+                <div style="width: 40%; display: inline-block; vertical-align: top">
+                    <button type="button" class="collapsible">Colors</button>
+                    <div class="content" id="colors">
+                        <div>
+                            <label for="bkgrd_color">Bkgd|Nil</label
+                            ><input
+                                id="bkgrd_color"
+                                type="color"
+                                style="width: 35%"
+                                onchange="background_color = this.value"
+                            /><input
+                                id="empty_color"
+                                type="color"
+                                style="width: 35%"
+                                onfocus="this.setAttribute('old_color', this.value)"
+                                onchange="exchange_colors(this,null,0)"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"terminal.integrated.tabs.description": "${task}${separator}${local}${separator}${cwd}"
+	}
+}
